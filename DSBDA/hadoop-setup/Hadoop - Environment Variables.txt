@@ -1,0 +1,10 @@
+HADOOP_HOME		C:\hadoop\bin
+
+JAVA_HOME		C:\JAVA\jdk-1.8\bin
+
+system variable ->> path
+
+C:\JAVA\jdk-1.8\bin
+C:\hadoop\bin
+C:\hadoop\sbin
+C:\hadoop

@@ -1,0 +1,119 @@
+DFS (Depth-First Search) and BFS (Breadth-First Search)
+
+1. Depth-First Search (DFS)
+
+Definition:
+Depth-First Search (DFS) is an algorithm for traversing or searching tree or graph data structures. The idea is to start from the root (or any arbitrary node in the case of a graph) and explore as far as possible along each branch before backtracking.
+
+Characteristics:
+- Traversal Order: DFS explores as deep as possible into the graph or tree before backtracking.
+- Stack-based: DFS can be implemented using recursion (implicit stack) or using an explicit stack.
+- Path Exploration: It explores nodes along one path (going deep), and once it reaches a dead end (or a node with no unvisited neighbors), it backtracks and explores the next unvisited neighbor.
+
+Algorithm for DFS (Recursive Approach):
+1. Start from the source node.
+2. Mark the current node as visited.
+3. Recursively visit all unvisited neighbors of the current node.
+4. If no unvisited neighbors remain, backtrack and continue the process for the next node.
+
+Pseudocode:
+DFS(Graph, node):
+    mark node as visited
+    for each neighbor in Graph[node]:
+        if neighbor is not visited:
+            DFS(Graph, neighbor)
+
+Time Complexity:
+- O(V + E) where V is the number of vertices and E is the number of edges. Every vertex is visited once, and every edge is explored once.
+
+Space Complexity:
+- O(V) for storing the visited nodes and recursion stack.
+
+Algorithm for DFS (Iterative Approach):
+1. Use a stack to store nodes to visit.
+2. Start by pushing the starting node onto the stack.
+3. While the stack is not empty:
+    a. Pop the top node from the stack.
+    b. If the node is not visited, mark it as visited and push all its neighbors to the stack.
+
+Pseudocode:
+DFS_Iterative(Graph, start):
+    create a stack and push the start node onto the stack
+    create a visited set
+    while stack is not empty:
+        node = stack.pop()
+        if node is not visited:
+            mark node as visited
+            push all unvisited neighbors of node to stack
+
+2. Breadth-First Search (BFS)
+
+Definition:
+Breadth-First Search (BFS) is an algorithm for searching a tree or graph. It explores all the neighbors of the current node before moving on to the next level neighbors. BFS is typically implemented using a queue to keep track of nodes to visit.
+
+Characteristics: 
+- Traversal Order: BFS explores all the nodes level by level (neighbor by neighbor).
+- Queue-based: BFS uses a queue to keep track of nodes yet to be explored.
+- Path Exploration: BFS explores all immediate neighbors of a node before exploring deeper neighbors.
+
+
+Algorithm for BFS (Iterative Approach):
+1. Start by marking the source node as visited and enqueue it.
+2. While the queue is not empty:
+    a. Dequeue the front node.
+    b. Visit all unvisited neighbors of the dequeued node, mark them as visited, and enqueue them.
+3. Repeat this process until the queue is empty.
+
+
+Pseudocode:
+BFS(Graph, start):
+    create a queue and enqueue the start node
+    create a visited set
+    mark the start node as visited
+    while queue is not empty:
+        node = dequeue()
+        visit(node)
+        for each neighbor of node in Graph[node]:
+            if neighbor is not visited:
+                mark neighbor as visited
+                enqueue(neighbor)
+
+Time Complexity:
+- O(V + E), where V is the number of vertices and E is the number of edges. Each vertex is processed once and each edge is considered once.
+
+Space Complexity:
+- O(V) for storing the visited nodes and the queue.
+
+Key Differences between DFS and BFS
+
+| Property               | DFS                                    | BFS                                    |
+|------------------------|----------------------------------------|----------------------------------------|
+| Traversal Type         | Deep-first (explores deep paths)       | Breadth-first (explores level by level)|
+| Implementation         | Uses stack (recursion or explicit)     | Uses queue (FIFO order)                |
+| Time Complexity        | O(V + E)                               | O(V + E)                               |
+| Space Complexity       | O(V) (for visited set and recursion)   | O(V) (for visited set and queue)       |
+| Ideal for              | Pathfinding, solving puzzles          | Shortest path in unweighted graphs    |
+| Memory Usage           | Can be higher for deep graphs         | May need more space to store nodes at each level |
+
+Example Graph for DFS and BFS
+
+Consider the following graph represented as an adjacency list:
+
+Graph = {
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F'],
+    'D': [],
+    'E': ['F'],
+    'F': []
+}
+
+- Starting DFS from 'A' will explore A -> B -> D -> E -> F -> C.
+- Starting BFS from 'A' will explore A -> B -> C -> D -> E -> F.
+
+Conclusion
+
+- DFS is good for searching deeper into graphs, and it's useful in problems like maze-solving, pathfinding, and topological sorting.
+- BFS is useful when you need the shortest path in an unweighted graph and is often used in applications like web crawlers and finding the shortest path in routing.
+
+Both DFS and BFS are fundamental algorithms in computer science, useful for searching and traversing graphs, and are widely used in various domains.

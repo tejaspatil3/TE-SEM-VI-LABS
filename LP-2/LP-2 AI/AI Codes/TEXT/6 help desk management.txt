@@ -1,0 +1,73 @@
+# Define a class for representing a ticket
+class Ticket:
+    # Constructor to initialize ticket attributes
+    def __init__(self, id, requester, issue, status='Open'):
+        self.id = id  # Unique ID for the ticket
+        self.requester = requester  # Name of the person requesting support
+        self.issue = issue  # Description of the issue
+        self.status = status  # Current status of the ticket, default is 'Open'
+
+# Define a class for the help desk system
+class HelpDesk:
+    # Constructor to initialize help desk attributes
+    def __init__(self):
+        self.tickets = []  # List to store all created tickets
+        self.next_ticket_id = 1  # ID to assign to the next created ticket
+
+    # Method to create a new ticket
+    def create_ticket(self, requester, issue):
+        # Create a new Ticket object with the next available ID
+        ticket = Ticket(self.next_ticket_id, requester, issue)
+        # Increment the next_ticket_id for the next ticket
+        self.next_ticket_id += 1
+        # Add the newly created ticket to the list of tickets
+        self.tickets.append(ticket)
+        # Print a message confirming the creation of the ticket
+        print(f"Ticket created successfully with ID: {ticket.id}")
+
+    # Method to close a ticket based on its ID
+    def close_ticket(self, ticket_id):
+        # Iterate through all tickets to find the one with the provided ID
+        for ticket in self.tickets:
+            if ticket.id == ticket_id:  # Check if the ticket ID matches
+                ticket.status = 'Closed'  # Update the status of the ticket to 'Closed'
+                # Print a message confirming the closure of the ticket
+                print(f"Ticket {ticket_id} closed successfully.")
+                return
+        # If no ticket with the provided ID is found, print an error message
+        print(f"Ticket with ID {ticket_id} not found.")
+
+    # Method to display all tickets along with their details
+    def display_tickets(self):
+        print("All tickets:")
+        for ticket in self.tickets:
+            # Print details of each ticket: ID, requester, issue, and status
+            print(f"ID: {ticket.id}, Requester: {ticket.requester}, Issue: {ticket.issue}, Status: {ticket.status}")
+
+# Define the main function to interact with the HelpDesk class
+def main():
+    help_desk = HelpDesk()  # Create an instance of the HelpDesk class
+
+    while True:  # Run the loop until the user chooses to exit
+        # Display menu options to the user
+        print("\n1. Create Ticket\n2. Close Ticket\n3. Display Tickets\n4. Exit")
+        choice = input("Enter your choice: ")  # Take user input for choice
+
+        if choice == '1':  # If the user chooses to create a ticket
+            requester = input("Enter requester's name: ")  # Prompt for requester's name
+            issue = input("Describe the issue: ")  # Prompt for issue description
+            help_desk.create_ticket(requester, issue)  # Call the create_ticket method
+        elif choice == '2':  # If the user chooses to close a ticket
+            ticket_id = int(input("Enter ticket ID to close: "))  # Prompt for ticket ID
+            help_desk.close_ticket(ticket_id)  # Call the close_ticket method
+        elif choice == '3':  # If the user chooses to display all tickets
+            help_desk.display_tickets()  # Call the display_tickets method
+        elif choice == '4':  # If the user chooses to exit
+            print("Exiting...")  # Print exit message
+            break  # Exit the loop and end the program
+        else:  # If the user enters an invalid choice
+            print("Invalid choice. Please try again.")  # Print error message
+
+# Entry point of the program
+if __name__ == "__main__":
+    main()  # Call the main function to start the program

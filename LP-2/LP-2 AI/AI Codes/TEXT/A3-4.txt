@@ -1,0 +1,54 @@
+class Job:
+    def _init_(self, job_id, deadline, profit):
+        self.job_id = job_id
+        self.deadline = deadline
+        self.profit = profit
+
+def job_scheduling(jobs):
+    # Sort jobs by decreasing order of profit
+    jobs.sort(key=lambda job: job.profit, reverse=True)
+
+    # Find the maximum deadline to size the schedule
+    max_deadline = max(job.deadline for job in jobs)
+    schedule = [None] * max_deadline  # None means time slot is empty
+
+    total_profit = 0
+    job_sequence = [None] * max_deadline  # To keep jobs in order of time slot
+
+    for job in jobs:
+        # Try to schedule the job in the latest possible available slot
+        for t in range(min(job.deadline, max_deadline) - 1, -1, -1):
+            if schedule[t] is None:
+                schedule[t] = job
+                job_sequence[t] = job.job_id
+                total_profit += job.profit
+                break
+
+    # Filter out empty slots (None) before printing
+    scheduled_jobs = [job_id for job_id in job_sequence if job_id is not None]
+
+    print("\nScheduled Jobs in order:", scheduled_jobs)
+    print("Total Profit:", total_profit)
+
+# Main program
+try:
+    n = int(input("Enter the number of jobs: "))
+    if n <= 0:
+        raise ValueError("Number of jobs must be a positive integer.")
+
+    jobs = []
+    for i in range(n):
+        print(f"\nEnter details for Job {i + 1}:")
+        job_id = input("Job ID: ").strip()
+        deadline = int(input("Deadline (positive integer): "))
+        profit = int(input("Profit: "))
+        
+        if deadline <= 0 or profit < 0:
+            raise ValueError("Deadline must be > 0 and Profit must be >= 0.")
+        
+        jobs.append(Job(job_id, deadline, profit))
+
+    job_scheduling(jobs)
+
+except ValueError as ve:
+    print("Invalid input:", ve)

@@ -1,0 +1,7 @@
+Ahmedabad	38
+Delhi	36
+Dhule	33
+Indore	35
+Malegaon	32
+Mumbai	33
+Pune	31

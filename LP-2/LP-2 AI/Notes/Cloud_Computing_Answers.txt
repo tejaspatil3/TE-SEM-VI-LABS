@@ -1,0 +1,101 @@
+
+1. Characteristics of Cloud:
+- On-Demand Self-Service: Users can access resources when needed without human interaction.
+- Broad Network Access: Services are available over the internet and accessible from anywhere.
+- Resource Pooling: Resources are shared among multiple users dynamically.
+- Rapid Elasticity: Resources can be scaled up or down easily.
+- Measured Service: Resource usage is monitored, controlled, and reported.
+
+2. What is Cloud Computing?
+Cloud computing is the delivery of computing services over the internet such as storage, processing power, databases, and software.
+
+Components:
+- Front-End (Client devices)
+- Back-End (Servers, storage, applications)
+- Cloud Infrastructure
+- Internet Network
+
+(Diagram not drawable here, but it includes client devices connecting via internet to cloud servers hosting applications and storage)
+
+3. Characteristics of Cloud Computing:
+(Same as Q1)
+
+Advantages:
+- Cost-effective
+- Scalable
+- Accessible from anywhere
+- Maintenance-free for user
+
+Disadvantages:
+- Internet dependency
+- Security risks
+- Limited control for users
+
+4. Cloud Service Models:
+- SaaS (Software as a Service): Delivers software applications over the internet (e.g. Gmail, MS Office 365)
+- PaaS (Platform as a Service): Provides platform to develop, run, and manage apps (e.g. Google App Engine)
+- IaaS (Infrastructure as a Service): Provides virtualized computing resources (e.g. AWS EC2)
+
+Cloud Deployment Models:
+- Public Cloud
+- Private Cloud
+- Hybrid Cloud
+- Community Cloud
+
+(Diagram typically shows user interacting with these service models and deployment types)
+
+5. Programming Environment of Google App Engine:
+Google App Engine supports multiple languages like Python, Java, Go. It provides APIs, a development server, and cloud storage. Developers can deploy apps without managing servers.
+
+6. Security Issues in Cloud:
+- Data Breaches
+- Loss of data
+- Account Hijacking
+- Insecure APIs
+- Denial of Service (DoS)
+- Insider threats
+
+7. General Architecture of HDFS:
+Includes:
+- NameNode: Manages metadata and namespace
+- DataNode: Stores actual data blocks
+- Client: Interacts with HDFS
+
+(Diagram shows NameNode connected to multiple DataNodes and clients)
+
+8. General Architecture of GFS:
+Includes:
+- Master: Maintains metadata
+- Chunkservers: Stores data in chunks
+- Clients: Interact via master to access chunkservers
+
+9. Disaster Recovery:
+It is a strategy to restore IT systems after failures due to disasters.
+
+Threats:
+- Natural disasters
+- Hardware failures
+- Cyber attacks
+- Power outages
+
+10. ZigBee Technology:
+A low-power wireless communication standard used in IoT for short-range data transmission, commonly used in home automation and smart devices.
+
+11. Implementation Levels of Virtualization:
+- Hardware-level
+- OS-level
+- Application-level
+- Storage Virtualization
+- Network Virtualization
+
+12. Need for Virtualization:
+- Efficient resource utilization
+- Isolation of applications
+- Cost savings
+- Easier backups and recovery
+
+Advantages:
+- Scalability
+- Flexibility
+- Disaster recovery
+- Reduced hardware cost

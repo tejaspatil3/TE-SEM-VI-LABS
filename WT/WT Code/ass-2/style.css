@@ -1,0 +1,9 @@
+h2 {
+    color: #e67e22;
+    text-align: center;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 40px;
+}

@@ -1,0 +1,41 @@
+def is_safe(node, color, graph, colors):
+    return all(graph[node][i] == 0 or colors[i] != color for i in range(len(graph)))
+
+def backtrack(graph, m, colors, node=0):
+    if node == len(graph): return True
+    for c in range(1, m + 1):
+        if is_safe(node, c, graph, colors):
+            colors[node] = c
+            if backtrack(graph, m, colors, node + 1): return True
+            colors[node] = 0
+    return False
+
+def get_mrv_node(graph, colors, m):
+    min_options, node = float('inf'), -1
+    for i in range(len(graph)):
+        if colors[i] == 0:
+            opts = sum(1 for c in range(1, m+1) if is_safe(i, c, graph, colors))
+            if opts < min_options:
+                min_options, node = opts, i
+    return node
+
+def branch_and_bound(graph, m, colors):
+    if 0 not in colors: return True
+    node = get_mrv_node(graph, colors, m)
+    for c in range(1, m + 1):
+        if is_safe(node, c, graph, colors):
+            colors[node] = c
+            if branch_and_bound(graph, m, colors): return True
+            colors[node] = 0
+    return False
+
+n = int(input("Nodes: "))
+m = int(input("Colors: "))
+print("Adjacency matrix:")
+graph = [list(map(int, input().split())) for _ in range(n)]
+
+colors_bt = [0]*n
+print("\nBacktracking:", backtrack(graph, m, colors_bt) and colors_bt or "No solution")
+
+colors_bb = [0]*n
+print("Branch & Bound:", branch_and_bound(graph, m, colors_bb) and colors_bb or "No solution")

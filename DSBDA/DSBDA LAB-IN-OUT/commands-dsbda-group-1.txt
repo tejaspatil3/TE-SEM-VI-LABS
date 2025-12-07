@@ -1,0 +1,19 @@
+3. Create Input File
+
+echo "Hello Hadoop" > input.txt
+echo "Hadoop is a big data tool" >> input.txt
+
+ 4. Create Java Class Directory
+mkdir wordcount_classes
+
+5. Compile the Java Code
+javac -classpath $(hadoop classpath) -d wordcount_classes WordCount.java
+
+ 6. Create JAR File
+jar -cvf wordcount.jar -C wordcount_classes/ .
+
+7. Run the Hadoop Job
+hadoop jar wordcount.jar WordCount input.txt output_dir
+
+ 8. View the Output
+cat output_dir/part-r-00000

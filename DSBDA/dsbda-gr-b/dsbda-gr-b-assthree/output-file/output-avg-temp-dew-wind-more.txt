@@ -1,0 +1,7 @@
+Ahmedabad	AvgTemp: 38°C, AvgDew: 19°C, AvgWind: 11 km/h
+Delhi	AvgTemp: 36°C, AvgDew: 18°C, AvgWind: 12 km/h
+Dhule	AvgTemp: 33°C, AvgDew: 21°C, AvgWind: 6 km/h
+Indore	AvgTemp: 35°C, AvgDew: 17°C, AvgWind: 9 km/h
+Malegaon	AvgTemp: 32°C, AvgDew: 20°C, AvgWind: 7 km/h
+Mumbai	AvgTemp: 33°C, AvgDew: 23°C, AvgWind: 14 km/h
+Pune	AvgTemp: 31°C, AvgDew: 19°C, AvgWind: 7 km/h

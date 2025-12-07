@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delight Bites Restaurant</title>
+    <link rel="stylesheet" href="style.css"> <!-- External CSS -->
+    <style>
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #d35400;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #aaa;
+            padding: 10px;
+            text-align: center;
+        }
+        /* img{
+            height: 500px;
+            width: 200px;
+        } */
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Delight Bites</h1>
+    <p>Your favorite spot for delicious meals!</p>
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#about">About Us</a>
+        <a href="#reservation">Reservation</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Image with link -->
+<a href="#menu">
+    <img src="images/restaurant.jpg" alt="Restaurant Interior" style="width:100%; max-height: 400px; text-align: center;justify-content: center;">
+</a>
+
+<section id="menu">
+    <h2 style="text-align: center;">Menu</h2>
+    <table>
+        <tr>
+            <th>Dish</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Margherita Pizza</td>
+            <td>Classic cheese and tomato pizza</td>
+            <td>₹10</td>
+        </tr>
+        <tr>
+            <td>Spaghetti Carbonara</td>
+            <td>Spaghetti with creamy sauce and bacon</td>
+            <td>₹12</td>
+        </tr>
+    </table>
+</section>
+
+<section id="about" style="text-align: center;">
+    <h2>About Us</h2>
+    <p style="padding: 0 20px;">Shalimar Hotel has been serving delicious Italian food since 1999. <br>We use fresh, organic ingredients and our chefs are passionate about taste and presentation.</p>
+
+    <h3>Why Choose Us?</h3>
+    <ul>
+        <li>Fresh Ingredients</li>
+        <li>Authentic Recipes</li>
+        <li>Friendly Atmosphere</li>
+    </ul>
+</section>
+
+<section id="reservation" style="text-align: center;">
+    <h2>Make a Reservation</h2>
+    <form action="/submit-reservation" method="post" style="padding: 0 20px;">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="date">Date:</label><br>
+        <input type="date" id="date" name="date"><br><br>
+
+        <label for="people">Number of People:</label><br>
+        <input type="number" id="people" name="people" min="1" max="20"><br><br>
+
+        <input type="submit" value="Reserve Now" style="background-color: #d35400; color: white; padding: 10px 20px;">
+    </form>
+</section>
+
+<section id="contact" style="text-align: center;">
+    <h2>Contact Us</h2>
+    <address style="padding: 0 20px;">
+        Shalimar Hotel<br>
+        Near National Highway-3<br>
+        Chandanpuri Road<br>
+        Phone: 02554-78920<br>
+        Email: contact@shalimarhotels.com
+    </address>
+</section>
+
+<footer style="background-color: #d35400; color: white; text-align: center; padding: 10px;">
+    <p>&copy; Shalimar Hotels India</p>
+</footer>
+
+</body>
+</html>

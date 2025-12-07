@@ -1,0 +1,43 @@
+Graph Coloring using Backtracking Algorithm
+-------------------------------------------------
+
+Theory:
+-------
+Graph coloring is a way of coloring the vertices of a graph such that no two adjacent vertices share the same color.
+The goal is to find a valid coloring using at most 'm' different colors.
+
+This problem is NP-Complete, meaning there's no known polynomial-time solution.
+Hence, we use backtracking to try all combinations of vertex coloring.
+
+Algorithm Steps:
+1. Start from the first vertex.
+2. Try assigning each color (from 0 to m-1) to the vertex.
+3. For each color, check if assigning it is safe (i.e., no adjacent vertex has the same color).
+4. If safe, assign the color and move to the next vertex recursively.
+5. If at any point, no color can be assigned, backtrack to the previous vertex and try the next color.
+6. If all vertices are assigned colors successfully, we have a solution.
+
+Simulation:
+-----------
+Graph:
+0 -- 1
+|  / |
+2 -- 3
+
+Number of colors: 3 (0=Red, 1=Green, 2=Blue)
+
+Step-by-step coloring:
+Vertex 0: Try color 0 -> Safe => Assign Red
+Vertex 1: Try color 0 -> Not Safe
+          Try color 1 -> Safe => Assign Green
+Vertex 2: Try color 0 -> Not Safe
+          Try color 1 -> Not Safe
+          Try color 2 -> Safe => Assign Blue
+Vertex 3: Try color 0 -> Safe => Assign Red
+
+Final Solution:
+---------------
+Vertex 0 -> Color 0 (Red)
+Vertex 1 -> Color 1 (Green)
+Vertex 2 -> Color 2 (Blue)
+Vertex 3 -> Color 0 (Red)

@@ -1,0 +1,53 @@
+# Define a class to represent an Employee
+class Employee:
+    # Constructor to initialize employee attributes
+    def __init__(self, name, age, experience, productivity, attitude):
+        self.name = name  # Employee's name
+        self.age = age  # Employee's age
+        self.experience = experience  # Employee's years of experience
+        self.productivity = productivity  # Employee's productivity (in percentage)
+        self.attitude = attitude  # Employee's attitude (positive/negative)
+
+# Define a class to evaluate an Employee's performance
+class PerformanceEvaluator:
+    # Constructor to initialize with an Employee object
+    def __init__(self, employee):
+        self.employee = employee  # Reference to the Employee being evaluated
+
+    # Method to evaluate performance based on predefined rules
+    def evaluate_performance(self):
+        performance_score = 0  # Initialize performance score
+
+        # Rule 1: Age criteria
+        if self.employee.age >= 25 and self.employee.age <= 60:
+            performance_score += 10  # Increment performance score by 10
+
+        # Rule 2: Experience criteria
+        if self.employee.experience >= 2:
+            performance_score += 20  # Increment performance score by 20
+
+        # Rule 3: Productivity criteria
+        if self.employee.productivity >= 80:
+            performance_score += 30  # Increment performance score by 30
+
+        # Rule 4: Attitude criteria
+        if self.employee.attitude == "positive":
+            performance_score += 40  # Increment performance score by 40
+
+        return performance_score  # Return the final performance score
+
+# Function to get employee information from user
+def get_employee_info():
+    name = input("Enter employee's name: ")  # Prompt for employee's name
+    age = int(input("Enter employee's age: "))  # Prompt for employee's age
+    experience = int(input("Enter employee's years of experience: "))  # Prompt for employee's experience
+    productivity = int(input("Enter employee's productivity (in percentage): "))  # Prompt for employee's productivity
+    attitude = input("Enter employee's attitude (positive/negative): ")  # Prompt for employee's attitude
+    return Employee(name, age, experience, productivity, attitude)  # Return an Employee object with provided information
+
+# Example usage:
+employee_info = get_employee_info()  # Call function to get employee information
+employee = Employee(**employee_info.__dict__)  # Create an Employee object using provided information
+evaluator = PerformanceEvaluator(employee)  # Create a PerformanceEvaluator object with the employee
+performance_score = evaluator.evaluate_performance()  # Evaluate the performance of the employee
+print(f"Performance score for {employee.name}: {performance_score}")  # Print the performance score

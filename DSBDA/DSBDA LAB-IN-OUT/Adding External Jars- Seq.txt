@@ -1,0 +1,16 @@
+Right Click on project
+
+Build path - configur build path
+
+under Libraries - Add External Jars
+
+go to - c-hadoop- share- hadoop folder
+
+add all jars in sequence from below folders
+
+client
+common
+yarn
+mapreduce
+hdfs
+hdfs-lib

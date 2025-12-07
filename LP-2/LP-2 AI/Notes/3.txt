@@ -1,0 +1,92 @@
+
+Minimum Spanning Tree (MST) Overview
+------------------------------------
+A Minimum Spanning Tree is a subset of edges in a connected, weighted, undirected graph that:
+- Connects all the vertices.
+- Has no cycles.
+- Has the minimum possible total edge weight.
+
+Two common algorithms for finding the MST:
+- Kruskal's Algorithm
+- Prim's Algorithm
+
+------------------------------------
+Kruskal's Algorithm (Greedy Approach)
+------------------------------------
+Definition:
+Kruskal’s Algorithm builds the MST by selecting edges in increasing order of weight,
+ensuring that no cycle is formed.
+
+Key Concepts:
+- Greedy Algorithm: Picks the minimum weight edge that doesn’t cause a cycle.
+- Disjoint Set (Union-Find): Checks for cycles.
+
+Algorithm Steps:
+1. Sort all edges in non-decreasing order of their weights.
+2. Initialize an empty MST set.
+3. For each edge (u, v) in sorted order:
+   - If find(u) != find(v): (i.e., no cycle is formed)
+     - Add edge to MST.
+     - Union the sets of u and v.
+4. Stop when MST has V - 1 edges.
+
+Time Complexity:
+- O(E log E) for sorting + union-find.
+
+Space Complexity:
+- O(V + E)
+
+Use Case:
+- Best for sparse graphs.
+
+------------------------------------
+Prim’s Algorithm (Greedy Approach)
+------------------------------------
+Definition:
+Prim’s Algorithm builds the MST by growing a single tree, choosing the smallest edge
+connecting a vertex inside the MST to one outside.
+
+Key Concepts:
+- Greedy selection of the minimum weight edge.
+- Uses Priority Queue (Min-Heap).
+
+Algorithm Steps:
+1. Start with any vertex.
+2. Use a min-heap to store edges.
+3. While the heap is not empty:
+   - Extract the smallest edge.
+   - If the vertex is not visited:
+     - Add to MST.
+     - Push all adjacent edges to the heap.
+4. Repeat until all vertices are included.
+
+Time Complexity:
+- O(E log V) using binary heap and adjacency list.
+
+Space Complexity:
+- O(V + E)
+
+Use Case:
+- Best for dense graphs.
+
+------------------------------------
+Comparison Table: Kruskal vs Prim
+------------------------------------
+| Feature            | Kruskal's Algorithm         | Prim's Algorithm            |
+|--------------------|-----------------------------|-----------------------------|
+| Approach           | Edge-based                  | Vertex-based                |
+| Data Structure     | Disjoint Set (Union-Find)   | Priority Queue (Min-Heap)   |
+| Suitable for       | Sparse graphs               | Dense graphs                |
+| Starts with        | Sorted list of all edges    | Arbitrary starting node     |
+| Edge Selection     | Global                      | Local                       |
+| Cycle Detection    | Required                    | Not required                |
+| Time Complexity    | O(E log E)                  | O(E log V)                  |
+| Space Complexity   | O(V + E)                    | O(V + E)                    |
+
+------------------------------------
+Summary
+------------------------------------
+- Both are Greedy algorithms for finding MST.
+- Kruskal’s adds lightest edge without forming a cycle (using Union-Find).
+- Prim’s grows MST from a node, always adding the nearest neighbor.
+- Use Kruskal for sparse graphs and Prim for dense graphs.

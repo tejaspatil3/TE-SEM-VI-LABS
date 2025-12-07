@@ -1,0 +1,62 @@
+
+Step-by-Step Simulation for 4-Queens Problem Using Backtracking
+
+Board Representation:
+- board[row] = col means a queen is placed at (row, col).
+
+Start Backtracking...
+
+Step 1: Place Queen in Row 0
+- Try column 0 → safe ✅
+  Board: [0, -1, -1, -1]
+- Recurse to row 1
+
+Step 2: Row 1
+- Try column 0 → ❌ (same column as row 0)
+- Try column 1 → ❌ (diagonal conflict with row 0)
+- Try column 2 → ✅
+  Board: [0, 2, -1, -1]
+- Recurse to row 2
+
+Step 3: Row 2
+- Try column 0 → ❌ (same column as row 0)
+- Try column 1 → ❌ (diagonal conflict with row 1)
+- Try column 2 → ❌ (same column as row 1)
+- Try column 3 → ❌ (diagonal conflict with row 1)
+No valid column → Backtrack
+
+Backtrack to Row 1
+- Reset column, try next column in row 1
+- Try column 3 → ❌ (diagonal conflict with row 0)
+No valid position → Backtrack
+
+Backtrack to Row 0
+- Try column 1 → ✅
+  Board: [1, -1, -1, -1]
+- Recurse to row 1
+
+Step 4: Row 1
+- Try column 0 → ❌ (diagonal conflict with row 0)
+- Try column 1 → ❌ (same column)
+- Try column 2 → ❌ (diagonal)
+- Try column 3 → ✅
+  Board: [1, 3, -1, -1]
+- Recurse to row 2
+
+Step 5: Row 2
+- Try column 0 → ✅
+  Board: [1, 3, 0, -1]
+- Recurse to row 3
+
+Step 6: Row 3
+- Try column 0 → ❌ (same as row 2)
+- Try column 1 → ❌ (diagonal with row 2)
+- Try column 2 → ✅
+  Board: [1, 3, 0, 2]
+All queens placed! 🎉
+
+Final Board:
+. Q . .
+. . . Q
+Q . . .
+. . Q .

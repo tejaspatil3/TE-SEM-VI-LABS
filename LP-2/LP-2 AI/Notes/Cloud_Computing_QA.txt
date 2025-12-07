@@ -1,0 +1,197 @@
+
+1. What is Cloud Computing with example?
+Cloud computing is the delivery of computing services like storage, servers, databases, networking, software over the internet. Example: Google Drive lets you store files online and access them from anywhere.
+
+2. Who is the father of cloud computing?
+Dr. Joseph Carl Robnett Licklider is known as the father of cloud computing.
+
+3. List down the basic characteristics of cloud computing?
+- On-demand self-service
+- Broad network access
+- Resource pooling
+- Rapid elasticity
+- Measured service
+
+4. What do you mean by Vertical and Horizontal scaling in Cloud Computing?
+- Vertical scaling: Adding more power (CPU, RAM) to an existing machine.
+- Horizontal scaling: Adding more machines to handle load.
+
+5. What are the services provided by Cloud Computing?
+- IaaS (Infrastructure as a Service)
+- PaaS (Platform as a Service)
+- SaaS (Software as a Service)
+
+6. What are different model in Deployment in Cloud Computing?
+- Public Cloud
+- Private Cloud
+- Hybrid Cloud
+- Community Cloud
+
+7. Mention the platform which are used for Large Scale Cloud Computing?
+- Apache Hadoop
+- Microsoft Azure
+- Amazon Web Services (AWS)
+- Google Cloud Platform
+
+8. Mention the name of some large cloud providers and databases?
+- Providers: AWS, Microsoft Azure, Google Cloud, IBM Cloud
+- Databases: Amazon RDS, Google Cloud Spanner, Microsoft SQL Azure, MongoDB Atlas
+
+9. Explain the difference between cloud and traditional datacenters?
+Cloud is flexible, pay-as-you-go, and accessed over the internet. Traditional datacenters require physical setup, high upfront cost, and manual management.
+
+10. What are the different components required in cloud computing?
+- Client devices
+- Datacenters
+- Cloud services (IaaS, PaaS, SaaS)
+- Internet connection
+
+11. What are the different platforms of cloud architecture?
+- Front-end platform (client side)
+- Back-end platform (servers, storage)
+- Cloud-based delivery
+- Network
+
+12. What is a cloud service?
+A cloud service is any service made available to users on demand via the Internet from a cloud provider’s servers.
+
+13. List down the basic clouds in cloud computing?
+- Public cloud
+- Private cloud
+- Hybrid cloud
+- Community cloud
+
+14. What are some issues with Cloud Computing?
+- Data security and privacy
+- Downtime
+- Limited control
+- Vendor lock-in
+
+15. Mention the services that are provided by Window Azure Operating System?
+- Compute services
+- Storage services
+- App services
+- Database services
+- Networking
+
+16. What is Cloud Computing Architecture?
+It defines the components and subcomponents of cloud, including front end, back end, cloud-based delivery, and network.
+
+17. What are the Services provided by AWS?
+- EC2 (compute)
+- S3 (storage)
+- RDS (database)
+- Lambda (serverless computing)
+- CloudFront (CDN)
+
+18. What are the Services provided by Microsoft?
+- Azure Virtual Machines
+- Azure Blob Storage
+- Azure SQL Database
+- Azure Functions
+- Azure DevOps
+
+19. What is Virtualization?
+Virtualization is creating a virtual version of something like server, storage device, or network resource.
+
+20. What is an EC2 instance?
+An EC2 instance is a virtual server in Amazon's Elastic Compute Cloud (EC2) for running applications on AWS.
+
+21. What is AMI in EC2?
+AMI (Amazon Machine Image) is a template that contains software configuration (OS, app server, apps) to launch EC2 instances.
+
+22. How to launch an on-demand EC2 instance in AWS?
+- Login to AWS Console
+- Open EC2 dashboard
+- Click "Launch Instance"
+- Choose AMI, instance type, configure settings
+- Launch
+
+23. What is Google App Engine?
+Google App Engine is a cloud platform for developing and hosting web apps in Google-managed data centers.
+
+24. What are advantages of Google App Engine?
+- No server management
+- Auto-scaling
+- Built-in services like NoSQL datastores
+- Secure and reliable
+
+25. What are the steps to install and configure Google App Engine?
+- Install Google Cloud SDK
+- Initialize SDK with `gcloud init`
+- Write your app code
+- Deploy using `gcloud app deploy`
+
+26. What is Apex?
+Apex is a programming language developed by Salesforce to build custom business logic.
+
+27. What are the Features of Apex as language?
+- Object-oriented
+- Integrated with Salesforce database
+- Supports triggers and classes
+- Built-in support for web services
+
+28. What are the application of Apex?
+- Create custom logic in Salesforce
+- Automate business processes
+- Integrate with external systems
+
+29. List some Apex Code Development Tools?
+- Developer Console
+- Visual Studio Code with Salesforce Extension
+- Force.com IDE
+- Workbench
+
+30. What are the steps to create application using Apex Programming Language?
+- Login to Salesforce
+- Create a new Apex class or trigger
+- Write and save code
+- Test using Developer Console or Test class
+
+31. What is Salesforce.com Inc.?
+It is a cloud-based software company known for its CRM (Customer Relationship Management) platform.
+
+32. What is Lightning Platform?
+Lightning Platform is Salesforce's UI framework for developing dynamic web apps for mobile and desktop.
+
+33. How to create Custom Application using Salesforce Classic?
+- Login to Salesforce Classic
+- Setup > Create > Apps
+- Click "New", define app components and save
+
+34. What is the difference between custom application and console application in sales force?
+- Custom App: Regular apps with tabs and objects
+- Console App: Optimized for service agents, with workspace tabs and split view
+
+35. What are the steps to create custom application using salesforce?
+- Go to Setup
+- Select Apps > App Manager
+- Click "New Lightning App" or "New Classic App"
+- Add tabs, objects, assign profiles
+
+36. What is hypervisor in Cloud Computing?
+A hypervisor is software that creates and runs virtual machines (VMs). It sits between hardware and operating systems.
+
+37. Explain Load Balancing in Cloud Computing.
+Load balancing distributes incoming network traffic across multiple servers to ensure no single server is overwhelmed.
+
+38. List the open-source cloud computing platform databases?
+- OpenStack
+- Eucalyptus
+- CloudStack
+- OpenNebula
+
+39. What are recent trends of Cloud Computing?
+- Serverless Computing
+- Multi-cloud strategy
+- AI & ML integration
+- Edge Computing
+- Kubernetes and containerization
+
+40. Applications of Cloud Computing.
+- Data storage and backup
+- Web hosting
+- E-commerce platforms
+- Video streaming
+- Disaster recovery
+- Software testing and development

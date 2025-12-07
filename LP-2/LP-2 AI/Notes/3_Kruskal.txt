@@ -1,0 +1,158 @@
+
+### Disjoint Set (Union-Find) Code Explanation 
+
+**Disjoint Set (Union-Find)** is a data structure that helps manage a collection of disjoint sets. 
+It supports efficient operations for merging sets and finding the root of a set.
+
+#### Class: DisjointSet
+
+1. **__init__(self, n)**:
+   - Initializes a parent array where each element is its own parent. 
+   - parent = [0, 1, 2, ..., n-1]
+
+2. ** find(self, x)**:
+   - The purpose of this function is to find the root (or leader) of the set that `x` belongs to.
+   - If `x` is not its own parent (`parent[x] != x`), it recursively calls `find` to find the root of `x`'s parent, and then uses **path compression**.
+   - Path compression optimizes future searches by making `x` directly point to the root of the set. 
+   - Returns the root of `x`'s set.
+
+3. ** union(self, x, y)**:
+   - Merges the sets containing `x` and `y` by making the root of one set point to the root of the other set.
+   - If `x` and `y` are already in the same set (i.e., they have the same root), it does nothing.
+   - Otherwise, it assigns the root of `y`'s set to be `x`'s root.
+
+#### Kruskal's Algorithm for Minimum Spanning Tree (MST)
+
+1. **kruskal_mst(edges, n)**:
+   - This function finds the Minimum Spanning Tree (MST) using Kruskal's algorithm.
+   - It sorts all edges by weight in ascending order.
+   - Then, it goes through each edge and adds it to the MST if it does not form a cycle (by checking if the two vertices of the edge belong to different sets using the `union` function).
+   - The function returns the MST and the total weight of the MST.
+
+2. **Driver Code**:
+   - Defines the graph as a list of edges with each edge represented by a tuple `(u, v, weight)` where `u` and `v` are the vertices and `weight` is the edge weight.
+   - Calls `kruskal_mst` to compute the MST.
+   - Prints the edges included in the MST and the total weight of the MST.
+
+### Example of the Kruskal's MST Algorithm:
+
+Given the following edges:
+edges = [
+    (0, 1, 4),
+    (0, 7, 8),
+    (1, 2, 8),
+    (1, 7, 11),
+    (2, 3, 7),
+    (2, 8, 2),
+    (2, 5, 4),
+    (3, 4, 9),
+    (3, 5, 14),
+    (4, 5, 10),
+    (5, 6, 2),
+    (6, 7, 1),
+    (6, 8, 6),
+    (7, 8, 7),
+]
+
+The output of the algorithm will be:
+Edges in MST:
+6 - 7: 1
+2 - 8: 2
+5 - 6: 2
+0 - 1: 4
+2 - 5: 4
+2 - 3: 7
+0 - 7: 8
+3 - 4: 9
+
+Total weight of MST: 37
+
+Step-by-step Simulation of Kruskal's Algorithm:
+
+1. Sorting the edges by weight:
+edges.sort(key=lambda x: x[2])
+
+After sorting the edges based on their weight, we get:
+edges = [
+    (6, 7, 1),   
+    (2, 8, 2),
+    (5, 6, 2),
+    (0, 1, 4),
+    (2, 5, 4),
+    (2, 3, 7),
+    (7, 8, 7),
+    (0, 7, 8),
+    (3, 4, 9),
+    (4, 5, 10),
+    (1, 7, 11),
+    (3, 5, 14)
+]
+
+2. Initialize Disjoint Set:
+We create the DisjointSet object:
+ds = DisjointSet(9)  # parent = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+Initially, each vertex is its own parent.
+
+3. Process the edges:
+
+Edge (6, 7, 1):
+    Find(6) -> 6
+    Find(7) -> 7
+    Union(6, 7) -> parent[7] = 6
+    MST: [(6, 7, 1)], Total weight: 1
+
+Edge (2, 8, 2):
+    Find(2) -> 2
+    Find(8) -> 8
+    Union(2, 8) -> parent[8] = 2
+    MST: [(6, 7, 1), (2, 8, 2)], Total weight: 3
+
+Edge (5, 6, 2):
+    Find(5) -> 5
+    Find(6) -> 6
+    Union(5, 6) -> parent[5] = 6
+    MST: [(6, 7, 1), (2, 8, 2), (5, 6, 2)], Total weight: 5
+
+Edge (0, 1, 4):
+    Find(0) -> 0
+    Find(1) -> 1
+    Union(0, 1) -> parent[1] = 0
+    MST: [(6, 7, 1), (2, 8, 2), (5, 6, 2), (0, 1, 4)], Total weight: 9
+
+Edge (2, 5, 4):
+    Find(2) -> 2
+    Find(5) -> 6
+    Union(2, 5) -> parent[6] = 2
+    MST: [(6, 7, 1), (2, 8, 2), (5, 6, 2), (0, 1, 4), (2, 5, 4)], Total weight: 13
+
+Edge (2, 3, 7):
+    Find(2) -> 2
+    Find(3) -> 3
+    Union(2, 3) -> parent[3] = 2
+    MST: [(6, 7, 1), (2, 8, 2), (5, 6, 2), (0, 1, 4), (2, 5, 4), (2, 3, 7)], Total weight: 20
+
+Edge (7, 8, 7):
+    Find(7) -> 6
+    Find(8) -> 2
+    Union(7, 8) -> This forms a cycle and is not added.
+
+Edge (0, 7, 8):
+    Find(0) -> 0
+    Find(7) -> 2
+    Union(0, 7) -> parent[0] = 2
+    MST: [(6, 7, 1), (2, 8, 2), (5, 6, 2), (0, 1, 4), (2, 5, 4), (2, 3, 7), (0, 7, 8)], Total weight: 28
+
+4. Final MST:
+The Minimum Spanning Tree (MST) is constructed with the following edges:
+
+MST = [
+    (6, 7, 1),
+    (2, 8, 2),
+    (5, 6, 2),
+    (0, 1, 4),
+    (2, 5, 4),
+    (2, 3, 7),
+    (0, 7, 8)
+]
+Total weight of MST: 28

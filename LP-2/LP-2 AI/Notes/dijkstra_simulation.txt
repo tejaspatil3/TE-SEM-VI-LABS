@@ -1,0 +1,103 @@
+
+Step-by-Step Simulation of Dijkstra's Algorithm:
+
+Initial Setup:
+Graph:
+A: [(B, 4), (C, 5)]
+B: [(A, 4), (C, 11), (D, 9), (E, 7)]
+C: [(A, 5), (B, 11), (E, 3)]
+D: [(B, 9), (F, 2)]
+E: [(B, 7), (C, 3), (F, 6)]
+F: [(D, 2), (E, 6)]
+
+Starting node: 'A'
+
+Initial Distances: {A: 0, B: ∞, C: ∞, D: ∞, E: ∞, F: ∞}
+Initial Previous nodes: {A: None, B: None, C: None, D: None, E: None, F: None}
+
+---
+
+Step 1: Start at node 'A':
+- Current Node: 'A'
+- Distances: {A: 0, B: ∞, C: ∞, D: ∞, E: ∞, F: ∞}
+- Neighbors of 'A': B (4), C (5)
+  - Distance to 'B': 0 + 4 = 4, update distances[B] = 4, previous[B] = A
+  - Distance to 'C': 0 + 5 = 5, update distances[C] = 5, previous[C] = A
+
+Updated Distances: {A: 0, B: 4, C: 5, D: ∞, E: ∞, F: ∞}
+Updated Previous: {A: None, B: A, C: A, D: None, E: None, F: None}
+
+---
+
+Step 2: Move to the next closest node (node 'B' with distance 4):
+- Current Node: 'B'
+- Distances: {A: 0, B: 4, C: 5, D: ∞, E: ∞, F: ∞}
+- Neighbors of 'B': A (4), C (11), D (9), E (7)
+  - Distance to 'A': 4 + 4 = 8, but 8 > distances[A] = 0, no update
+  - Distance to 'C': 4 + 11 = 15, but 15 > distances[C] = 5, no update
+  - Distance to 'D': 4 + 9 = 13, update distances[D] = 13, previous[D] = B
+  - Distance to 'E': 4 + 7 = 11, update distances[E] = 11, previous[E] = B
+
+Updated Distances: {A: 0, B: 4, C: 5, D: 13, E: 11, F: ∞}
+Updated Previous: {A: None, B: A, C: A, D: B, E: B, F: None}
+
+---
+
+Step 3: Move to the next closest node (node 'C' with distance 5):
+- Current Node: 'C'
+- Distances: {A: 0, B: 4, C: 5, D: 13, E: 11, F: ∞}
+- Neighbors of 'C': A (5), B (11), E (3)
+  - Distance to 'A': 5 + 5 = 10, but 10 > distances[A] = 0, no update
+  - Distance to 'B': 5 + 11 = 16, but 16 > distances[B] = 4, no update
+  - Distance to 'E': 5 + 3 = 8, update distances[E] = 8, previous[E] = C
+
+Updated Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: ∞}
+Updated Previous: {A: None, B: A, C: A, D: B, E: C, F: None}
+
+---
+
+Step 4: Move to the next closest node (node 'E' with distance 8):
+- Current Node: 'E'
+- Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: ∞}
+- Neighbors of 'E': B (7), C (3), F (6)
+  - Distance to 'B': 8 + 7 = 15, but 15 > distances[B] = 4, no update
+  - Distance to 'C': 8 + 3 = 11, but 11 > distances[C] = 5, no update
+  - Distance to 'F': 8 + 6 = 14, update distances[F] = 14, previous[F] = E
+
+Updated Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: 14}
+Updated Previous: {A: None, B: A, C: A, D: B, E: C, F: E}
+
+---
+
+Step 5: Move to the next closest node (node 'D' with distance 13):
+- Current Node: 'D'
+- Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: 14}
+- Neighbors of 'D': B (9), F (2)
+  - Distance to 'B': 13 + 9 = 22, but 22 > distances[B] = 4, no update
+  - Distance to 'F': 13 + 2 = 15, but 15 > distances[F] = 14, no update
+
+Updated Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: 14}
+Updated Previous: {A: None, B: A, C: A, D: B, E: C, F: E}
+
+---
+
+Step 6: Move to the next closest node (node 'F' with distance 14):
+- Current Node: 'F'
+- Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: 14}
+- Neighbors of 'F': D (2), E (6)
+  - Distance to 'D': 14 + 2 = 16, but 16 > distances[D] = 13, no update
+  - Distance to 'E': 14 + 6 = 20, but 20 > distances[E] = 8, no update
+
+Updated Distances: {A: 0, B: 4, C: 5, D: 13, E: 8, F: 14}
+Updated Previous: {A: None, B: A, C: A, D: B, E: C, F: E}
+
+---
+
+Final Distances and Paths:
+A: Distance = 0, Path = A
+B: Distance = 4, Path = A -> B
+C: Distance = 5, Path = A -> C
+D: Distance = 13, Path = A -> B -> D
+E: Distance = 8, Path = A -> C -> E
+F: Distance = 14, Path = A -> C -> E -> F
+

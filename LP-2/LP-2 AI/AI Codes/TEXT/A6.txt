@@ -1,0 +1,22 @@
+def expert_system():
+    print("Welcome to the Expert System!")
+    print("I will try to diagnose your illness based on your symptoms.")
+
+    fever = input("Do you have a fever? (yes/no): ").lower()
+    cough = input("Do you have a cough? (yes/no): ").lower()
+    sore_throat = input("Do you have a sore throat? (yes/no): ").lower()
+    runny_nose = input("Do you have a runny nose? (yes/no): ").lower()
+    body_ache = input("Do you have body aches? (yes/no): ").lower()
+
+    # Rule-based inference
+    if fever == 'yes' and cough == 'yes' and body_ache == 'yes':
+        print("Diagnosis: You may have the Flu.")
+    elif sore_throat == 'yes' and runny_nose == 'yes' and fever == 'no':
+        print("Diagnosis: You may have a Common Cold.")
+    elif fever == 'yes' and cough == 'yes' and sore_throat == 'yes':
+        print("Diagnosis: You may have COVID-19. Please get tested!")
+    else:
+        print("Diagnosis: Symptoms are unclear. Please consult a doctor.")
+
+# Run the expert system
+expert_system()

@@ -1,0 +1,116 @@
+
+Step-by-Step Simulation for 8-Queens Problem Using Branch and Bound
+
+Board Representation:
+- board[row] = col means a queen is placed at (row, col).
+- Branch and Bound uses sets to block unsafe columns and diagonals.
+
+Start Branch and Bound...
+
+Step 1: Place Queen in Row 0
+- Try column 0 → safe ✅
+  Board: [0, -1, -1, -1, -1, -1, -1, -1]
+  Blocked: cols={0}, left_diags={0}, right_diags={0}
+- Recurse to row 1
+
+Step 2: Row 1
+- Try column 0 → ❌ (blocked col)
+- Try column 1 → ❌ (diagonal conflict)
+- Try column 2 → ✅
+  Board: [0, 2, -1, -1, -1, -1, -1, -1]
+  Blocked: cols={0,2}, left_diags={0,-1}, right_diags={0,3}
+- Recurse to row 2
+
+Step 3: Row 2
+- Try column 0 → ❌
+- Try column 1 → ❌
+- Try column 2 → ❌
+- Try column 3 → ❌
+- Try column 4 → ✅
+  Board: [0, 2, 4, -1, -1, -1, -1, -1]
+  Blocked: cols={0,2,4}, left_diags={0,-1,-2}, right_diags={0,3,6}
+- Recurse to row 3
+
+Step 4: Row 3
+- Try column 0 → ❌
+- Try column 1 → ❌
+- Try column 2 → ❌
+- Try column 3 → ❌
+- Try column 5 → ✅
+  Board: [0, 2, 4, 5, -1, -1, -1, -1]
+  Blocked: cols={0,2,4,5}, left_diags={0,-1,-2,-2}, right_diags={0,3,6,8}
+- Recurse to row 4
+
+[... simulation continues through valid/invalid placements and backtracking]
+
+Eventually reaches:
+
+Final Valid Configuration (example):
+Board: [0, 4, 7, 5, 2, 6, 1, 3]
+. Q . . . . . .
+. . . . Q . . .
+. . . . . . . Q
+. . . . . Q . .
+. . Q . . . . .
+. . . . . . Q .
+Q . . . . . . .
+. . . Q . . . .
+
+✅ All queens placed safely.
+
+Note: Branch and Bound prunes many paths early by avoiding known unsafe placements.
+
+
+
+
+# Create the explanation and board example as a text file
+
+diagonal_explanation = """
+Example: Understanding row - col and row + col in N-Queens (Diagonal Attack Detection)
+
+Queen placed at position: (2, 3)
+
+row - col = -1 → Left Diagonal (\)
+row + col = 5  → Right Diagonal (/)
+
+Left Diagonal (\\): All positions where row - col = -1
+- (1,2), (0,1), (3,4), (4,5), (5,6), (6,7)
+
+Right Diagonal (/): All positions where row + col = 5
+- (0,5), (1,4), (3,2), (4,1), (5,0)
+
+8x8 Board View (Queen at (2,3)):
+
+. . . . . . . .   row 0
+. . . . . . . .   row 1
+. . . Q . . . .   row 2
+. . . . . . . .   row 3
+. . . . . . . .   row 4
+. . . . . . . .   row 5
+. . . . . . . .   row 6
+. . . . . . . .   row 7
+
+Left Diagonal (\) view (row - col = -1):
+
+. \ . . . . . .
+. . \ . . . . .
+. . . Q . . . .
+. . . . \ . . .
+. . . . . \ . .
+. . . . . . \ .
+. . . . . . . \ 
+. . . . . . . .
+
+Right Diagonal (/) view (row + col = 5):
+
+. . . . . / . .
+. . . . / . . .
+. . . Q . . . .
+. . / . . . . .
+. / . . . . . .
+/ . . . . . . .
+. . . . . . . .
+. . . . . . . .
+
+This demonstrates how diagonals are calculated using row - col and row + col, enabling constant-time conflict checking.
+"""

@@ -1,0 +1,8 @@
+10.223.157.186 - - [15/Jul/2009:20:50:32 -0700] "GET /assets/js/the-associates.js HTTP/1.1" 304 -
+10.223.157.186 - - [15/Jul/2009:20:50:33 -0700] "GET /assets/img/home-logo.png HTTP/1.1" 304 -
+192.168.1.1 - - [15/Jul/2009:20:51:12 -0700] "POST /login HTTP/1.1" 200 -
+10.223.157.186 - - [15/Jul/2009:20:52:02 -0700] "GET /assets/img/banner.png HTTP/1.1" 304 -
+172.16.0.2 - - [15/Jul/2009:20:53:02 -0700] "GET /about.html HTTP/1.1" 404 -
+192.168.1.1 - - [15/Jul/2009:20:54:22 -0700] "POST /logout HTTP/1.1" 200 -
+10.223.157.186 - - [15/Jul/2009:20:54:32 -0700] "GET /assets/js/main.js HTTP/1.1" 304 -
+172.16.0.2 - - [15/Jul/2009:20:55:02 -0700] "GET /contact.html HTTP/1.1" 404 -

@@ -1,0 +1,83 @@
+import copy
+import heapq
+
+# Check if a player has won
+def check_win(board, player):
+    win_states = [
+        [board[0][0], board[0][1], board[0][2]],
+        [board[1][0], board[1][1], board[1][2]],
+        [board[2][0], board[2][1], board[2][2]],
+        [board[0][0], board[1][0], board[2][0]],
+        [board[0][1], board[1][1], board[2][1]],
+        [board[0][2], board[1][2], board[2][2]],  # Fixed this line
+        [board[0][0], board[1][1], board[2][2]],
+        [board[0][2], board[1][1], board[2][0]],
+    ]
+    return [player, player, player] in win_states
+
+# Heuristic function
+def heuristic(board):
+    if check_win(board, 'X'):
+        return 10
+    elif check_win(board, 'O'):
+        return -10
+    else:
+        return 0
+
+# Generate all valid successors
+def get_succ(board, player):
+    successors = []
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] == ' ':
+                new_board = copy.deepcopy(board)
+                new_board[i][j] = player
+                successors.append((new_board, (i, j)))  # Fix: tuple here
+    return successors
+
+# A* Search Algorithm
+def a_star(board, player):
+    open_list = []
+    heapq.heappush(open_list, (0, board, 0, None))
+    best_move = None
+    best_score = float('-inf') if player == 'X' else float('inf')
+
+    while open_list:
+        f, current_board, g, move = heapq.heappop(open_list)
+        score = heuristic(current_board)
+
+        # Win found
+        if score == 10 or score == -10:
+            return move
+        # If board is full
+        if g == 9:
+            continue
+
+        next_player = 'O' if player == 'X' else 'X'
+        successors = get_succ(current_board, next_player)
+
+        for succ_board, succ_move in successors:
+            h = heuristic(succ_board)
+            f_new = g + 1 + abs(h)
+            heapq.heappush(open_list, (f_new, succ_board, g + 1, succ_move))
+
+            # Update best move
+            if player == 'X' and h > best_score:
+                best_score = h
+                best_move = succ_move
+            elif player == 'O' and h < best_score:
+                best_score = h
+                best_move = succ_move
+
+    return best_move
+
+# Empty board to start
+initial_board = [
+    ['X', 'O', 'O'],
+    ['O', 'X', 'X'],
+    ['X', ' ', ' ']
+]
+
+# Find best move for X
+best_move = a_star(initial_board, 'X')
+print("Best move for X:", best_move)

@@ -1,0 +1,43 @@
+# Define a class for the expert system
+class ExpertSystem:
+    # Constructor to initialize the knowledge base
+    def __init__(self):
+        self.knowledge_base = {
+            "fever": ["flu", "common cold", "pneumonia"],
+            "cough": ["common cold", "bronchitis", "pneumonia"],
+            "headache": ["migraine", "tension headache", "sinusitis"],
+            "fatigue": ["flu", "anemia", "hypothyroidism"],
+            "chest pain": ["heart attack", "angina", "pneumonia"]
+        }
+
+    # Method to diagnose based on symptoms
+    def diagnose(self, symptoms):
+        # List to store possible diagnoses
+        possible_diagnoses = []
+        # Iterate over each symptom provided by the user
+        for symptom in symptoms:
+            # Check if the symptom is in the knowledge base
+            if symptom in self.knowledge_base:
+                # If the symptom is found, extend the list of possible diagnoses
+                possible_diagnoses.extend(self.knowledge_base[symptom])
+        
+        # Check if any possible diagnoses were found
+        if possible_diagnoses:
+            # Remove duplicates by converting to a set and then back to a list
+            unique_diagnoses = list(set(possible_diagnoses))
+            return unique_diagnoses
+        else:
+            # If no diagnoses were found, return a default message
+            return ["No specific diagnosis found."]
+
+# Instantiate the expert system
+expert_system = ExpertSystem()
+
+# Get symptoms from user input
+user_input = input("Enter your symptoms (comma-separated): ")
+# Split user input into a list of symptoms, stripping any leading or trailing whitespace
+symptoms = [s.strip() for s in user_input.split(',')]
+
+# Diagnose and display results
+diagnoses = expert_system.diagnose(symptoms)
+print("Possible diagnoses based on symptoms:", diagnoses)

@@ -1,0 +1,57 @@
+# N-Queens Problem using Backtracking (Constraint Satisfaction Problem)
+N = 4 # You can change N to any number (e.g., 8 for 8-Queens)
+
+def printSolution(board):
+    for i in range(N):
+        for j in range(N):
+            print(board[i][j], end=' ')
+        print()
+    print()  # Print a blank line between solutions
+
+# Function to check if placing a queen is safe
+def isSafe(board, row, col):
+    # Check this row on left side
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
+
+    # Check upper diagonal on left side
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    # Check lower diagonal on left side
+    for i, j in zip(range(row, N, 1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+
+    return True
+
+# Recursive function to solve N-Queens problem
+def solveNQUtil(board, col):
+    # Base case: If all queens are placed
+    if col >= N:
+        printSolution(board)  # Print solution when found
+        return True
+
+    res = False
+    for i in range(N):
+        if isSafe(board, i, col):
+            board[i][col] = 1  # Place queen
+
+            # Recur to place rest of the queens
+            res = solveNQUtil(board, col + 1) or res
+
+            board[i][col] = 0  # Backtrack if needed
+
+    return res
+
+# Main function
+def solveNQ():
+    board = [[0 for _ in range(N)] for _ in range(N)]
+    if not solveNQUtil(board, 0):
+        print("Solution does not exist")
+
+# Run the program
+solveNQ()
+ 
